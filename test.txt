@@ -1,0 +1,6 @@
+Name: Alex 25, phase:  1
+Name: Bob 30, phase:  2
+Name: Charlie 20, phase:  3
+Name: David 18, phase:  4
+Name: Ella 22, phase:  5
+Name: Fedor 44, phase:  undefined
