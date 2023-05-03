@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function PostCard({ post }) {
+  const [disabled, setDisabled] = useState(false);
+  const deleteHandler = async () => {
+    try {
+      const response = await fetch(`/api/posts/delete/${post.id}`);
+      if (response.status === 200) {
+        window.location.reload();
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setDisabled(true);
+    // alert('Server error');
+  };
   return (
     <div className="card" style={{ width: '18rem' }}>
       <img src={post.image} className="card-img-top" alt={post.title} />
@@ -10,6 +24,23 @@ export default function PostCard({ post }) {
         <a href={`/posts/${post.id}`} className="btn btn-primary">
           Show more
         </a>
+        <button
+          disabled={disabled}
+          onClick={deleteHandler}
+          type="button"
+          className="btn btn-danger"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-trash-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+          </svg>
+        </button>
       </div>
     </div>
   );

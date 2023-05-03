@@ -20,6 +20,14 @@ export default function Layout({ initState }) {
           integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
           crossOrigin="anonymous"
         />
+        <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `window.initState=${JSON.stringify(initState)}`,
+        }}
+      />
+        <script defer src="/app.js" />
+        <script defer src="/vendor.js" />
         <title>Document</title>
       </head>
       <body>

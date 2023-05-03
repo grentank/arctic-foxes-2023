@@ -9,10 +9,6 @@ postsRouter
     const posts = await Post.findAll();
     const initState = { posts };
     res.render('Layout', initState);
-  })
-  .post(async (req, res) => {
-    await Post.create(req.body);
-    res.redirect('/posts');
   });
 
 postsRouter.get('/add', (req, res) => {

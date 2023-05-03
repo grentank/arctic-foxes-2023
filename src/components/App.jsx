@@ -1,21 +1,28 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import NavBar from './ui/NavBar'
-import MainPage from './pages/MainPage'
-import AddPostPage from './pages/AddPostPage'
-import AllPostsPage from './pages/AllPostsPage'
-import OnePostPage from './pages/OnePostPage'
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import NavBar from './ui/NavBar';
+import MainPage from './pages/MainPage';
+import AddPostPage from './pages/AddPostPage';
+import AllPostsPage from './pages/AllPostsPage';
+import OnePostPage from './pages/OnePostPage';
 
 export default function App({ posts, onePost }) {
+  // console.log('Hello!');
+  // fetch('https://jsonplaceholder.typicode.com/users/1')
+  //   .then((response) => response.json())
+  //   .then(console.log);
   return (
-    <div className='container'>
-        <NavBar />
-        <Routes>
-            <Route path='/' element={<MainPage />} />
-            <Route path='/posts/add' element={<AddPostPage />} />
-            <Route path='/posts' element={<AllPostsPage posts={posts} />} />
-            <Route path='/posts/:postId' element={<OnePostPage onePost={onePost} />} />
-        </Routes>
+    <div className="container">
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/posts/add" element={<AddPostPage />} />
+        <Route path="/posts" element={<AllPostsPage posts={posts} />} />
+        <Route
+          path="/posts/:postId"
+          element={<OnePostPage onePost={onePost} />}
+        />
+      </Routes>
     </div>
-  )
+  );
 }
