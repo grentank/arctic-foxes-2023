@@ -15,10 +15,10 @@ apiPostsRouter.post('/', async (req, res) => {
   }
 });
 
-apiPostsRouter.get('/delete/:postId', async (req, res) => {
+apiPostsRouter.delete('/:postId', async (req, res) => { // HTTP method: DELETE
   try {
     const { postId } = req.params;
-    await Post.destroy({
+    await Post.destroy({ // .destroy -> Sequelize
       where: {
         id: postId,
       },

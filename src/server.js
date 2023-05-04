@@ -6,6 +6,7 @@ import indexRouter from './routes/indexRouter';
 import postsRouter from './routes/postsRouter';
 import resLocals from './middlewares/resLocals';
 import apiPostsRouter from './routes/apiPostsRouter';
+import apiCommentsRouter from './routes/apiCommentsRouter';
 
 const app = express();
 const PORT = 3000;
@@ -23,5 +24,6 @@ app.use(express.json());
 app.use('/', indexRouter);
 app.use('/posts', postsRouter);
 app.use('/api/posts', apiPostsRouter);
+app.use('/api/comments', apiCommentsRouter);
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
